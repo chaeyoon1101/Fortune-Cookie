@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageText = ""
+    @State private var messageText = "test"
     @State private var openedFortuneCookie = false
+    @State private var isAnimating = false
     
     var randomMessage: String {
         let fortuneMessages = ModelData().fortuneCookie.messages
@@ -19,21 +20,25 @@ struct ContentView: View {
             VStack {
                 fortuneCookie
                     .onTapGesture {
-                        withAnimation {
-                            openedFortuneCookie.toggle()
+                        if (!isAnimating) {
+                            messageText = randomMessage
+                            isAnimating = true
+                            withAnimation {
+                                openedFortuneCookie.toggle()
+                            } completion: {
+                                isAnimating = false
+                            }
                         }
-                        messageText = randomMessage
                     }
-                
-                Text(messageText)
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
+            }
+            if (openedFortuneCookie) {
+                fortuneMessagePaper
             }
         }
     }
     
     private var backgroundView: some View {
-        Color(red: 255 / 255, green: 250 / 255, blue: 240 / 255)
+        Color(red: 245 / 255, green: 235 / 255, blue: 220 / 255)
             .edgesIgnoringSafeArea(.all)
     }
     
@@ -60,6 +65,35 @@ struct ContentView: View {
             }
         }
     }
+    
+    private var fortuneMessagePaper: some View {
+         
+    return ZStack {
+            GeometryReader { geometry in
+                Image("white-paper-texture")
+                    .resizable()
+                    .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.3)
+                    .position(
+                        x: geometry.size.width / 2.0,
+                        y: geometry.size.height / 1.5
+                    )
+                    .clipped()
+                Text(messageText)
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .frame(width: geometry.size.width * 0.7)
+                    .position(
+                        x: geometry.size.width / 2.0,
+                        y: geometry.size.height / 1.5
+                    )
+            }
+        }
+    }
+        
+        
+    
 }
 
 #Preview {
