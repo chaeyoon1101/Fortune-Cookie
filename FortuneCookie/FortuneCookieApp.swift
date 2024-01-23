@@ -1,10 +1,3 @@
-//
-//  FortuneCookieApp.swift
-//  FortuneCookie
-//
-//  Created by 임채윤 on 1/21/24.
-//
-
 import SwiftUI
 
 @main
