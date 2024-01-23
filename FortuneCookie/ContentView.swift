@@ -15,6 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            backgroundView
             VStack {
                 fortuneCookie
                     .onTapGesture {
@@ -27,13 +28,13 @@ struct ContentView: View {
                 Text(messageText)
                     .font(.headline)
                     .multilineTextAlignment(.center)
-                    .padding()
-                
-                Button("포츈 쿠키 열기") {
-                    messageText = randomMessage
-                }
             }
         }
+    }
+    
+    private var backgroundView: some View {
+        Color(red: 255 / 255, green: 250 / 255, blue: 240 / 255)
+            .edgesIgnoringSafeArea(.all)
     }
     
     private var fortuneCookie: some View {
