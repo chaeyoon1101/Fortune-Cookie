@@ -47,8 +47,6 @@ struct SettingView: View {
                             handleMailResult()
                         }
                 }
-                
-                
             }
         }
         .navigationTitle("설정")
@@ -57,28 +55,33 @@ struct SettingView: View {
             reloadUserDefaults()
         }
         
-        .onChange(of: notificationEnabled, initial: true) { oldValue, newValue in
+        .onChange(of: notificationEnabled, perform: { newValue in
             UserDefaults.standard.set(newValue, forKey: "notificationEnabled")
             
-            if oldValue != newValue {
-                notificationManager.requestPermission()
-                checkNotificationSetting()
+            notificationManager.requestPermission()
+            checkNotificationSetting()
+
+            print("changed")
+            DispatchQueue.main.async {
+                handleNotificationEnabledChange()
             }
-            
-            handleNotificationEnabledChange()
-        }
+        })
         
-        .onChange(of: notificationTime, initial: true) { _, newNotificationTime in
+        .onChange(of: notificationTime, perform: { newNotificationTime in
             UserDefaults.standard.set(newNotificationTime, forKey: "notificationTime")
-            
-            handleNotificationTimeChange()
-        }
+
+            DispatchQueue.main.async {
+                handleNotificationTimeChange()
+            }
+        })
         
-        .onChange(of: haptic, { _, newValue in
+        .onChange(of: haptic, perform: { newValue in
             let hapticIntensity = newValue.rawValue
             UserDefaults.standard.set(hapticIntensity, forKey: "hapticIntensity")
-            
-            haptic.vibrate()
+
+            DispatchQueue.main.async {
+                haptic.vibrate()
+            }
         })
         
         .alert("알림 설정", isPresented: $showingSettingAlert) {

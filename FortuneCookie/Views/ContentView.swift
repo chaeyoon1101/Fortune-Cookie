@@ -46,10 +46,17 @@ struct ContentView: View {
                                     }
                                     fortuneMessage = randomMessage
                                     isAnimating = true
-                                    withAnimation {
-                                        openedFortuneCookie.toggle()
-                                    } completion: {
-                                        isAnimating = false
+                                    if #available(iOS 17.0, *) {
+                                        withAnimation {
+                                            openedFortuneCookie.toggle()
+                                        } completion: {
+                                            isAnimating = false
+                                        }
+                                    } else {
+                                        withAnimation {
+                                            openedFortuneCookie.toggle()
+                                            isAnimating = false
+                                        }
                                     }
                                 }
                             }

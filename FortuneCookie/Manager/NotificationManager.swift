@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 
 struct NotificationManager {
-    var notification = Notification(id: UUID().uuidString, title: "오늘의 포춘 쿠키", subTitle: "오늘의 포춘 쿠키를 확인해보세요!")
+    var notification = Notification(id: UUID().uuidString, title: "오늘의 포춘 쿠키", body: "오늘의 포춘 쿠키를 확인해보세요!")
     
     func requestPermission() {
         UNUserNotificationCenter.current()
@@ -39,7 +39,7 @@ struct NotificationManager {
         let content = UNMutableNotificationContent()
         content.title = notification.title
         content.sound = UNNotificationSound.default
-        content.subtitle = notification.subTitle
+        content.body = notification.body
         
 //        print(date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -61,5 +61,5 @@ struct NotificationManager {
 struct Notification {
     var id: String
     var title: String
-    var subTitle: String
+    var body: String
 }
