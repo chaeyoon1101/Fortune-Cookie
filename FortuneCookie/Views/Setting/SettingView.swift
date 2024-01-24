@@ -6,8 +6,7 @@ struct SettingView: View {
     @State private var showingAlert: Bool = false
     
     let notificationManager = NotificationManager()
-    
-    
+
     var body: some View {
         Form {
             Section(header: Text("기본 세팅")) {
@@ -24,22 +23,25 @@ struct SettingView: View {
         }
         .navigationTitle("설정")
         
-        .onChange(of: notificationEnabled, initial: true) { oldValue, newValue  in
+        .onAppear {
+            reloadUserDefaults()
+        }
+        
+        .onChange(of: notificationEnabled, initial: true) { oldValue, newValue in
             UserDefaults.standard.set(newValue, forKey: "notificationEnabled")
+            
             if oldValue != newValue {
+                notificationManager.requestPermission()
                 checkNotificationSetting()
             }
             
-            if newValue {
-                notificationManager.scheduleNotification()
-            } else {
-                notificationManager.removeNotification()
-            }
+            handleNotificationEnabledChange()
         }
         
         .onChange(of: notificationTime, initial: true) { _, newNotificationTime in
             UserDefaults.standard.set(newNotificationTime, forKey: "notificationTime")
-            notificationManager.scheduleNotification()
+            
+            handleNotificationTimeChange()
         }
         
         .alert("알림 설정", isPresented: $showingAlert) {
@@ -48,6 +50,25 @@ struct SettingView: View {
             }
         } message: {
             Text("알림 설정이 거부되어있어요. \n알림 설정을 허용으로 바꿔주세요!")
+        }
+    }
+    
+    private func reloadUserDefaults() {
+        notificationEnabled = UserDefaults.standard.bool(forKey: "notificationEnabled")
+        notificationTime = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
+    }
+
+    private func handleNotificationEnabledChange() {
+        if notificationEnabled {
+            notificationManager.schedule()
+        } else {
+            notificationManager.removeNotification()
+        }
+    }
+    
+    private func handleNotificationTimeChange() {
+        if notificationEnabled {
+            notificationManager.scheduleNotification()
         }
     }
     

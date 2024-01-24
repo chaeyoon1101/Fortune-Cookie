@@ -21,7 +21,6 @@ struct NotificationManager {
     
     func schedule() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            
             switch settings.authorizationStatus {
             case .notDetermined:
                 self.requestPermission()
@@ -42,13 +41,15 @@ struct NotificationManager {
         content.sound = UNNotificationSound.default
         content.subtitle = notification.subTitle
         
-        print(date)
+//        print(date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
         
+        removeNotification()
+        
         UNUserNotificationCenter.current().add(request) { error in
             guard error == nil else { return }
-            print("scheduling notification with id:\(notification.id)")
+//            print(" id:\(notification.id)")
         }
     }
     

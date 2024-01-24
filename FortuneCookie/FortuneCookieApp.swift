@@ -3,33 +3,11 @@ import UIKit
 
 @main
 struct FortuneCookieApp: App {
-    func setNotification() -> Void {
-        let manager = NotificationManager()
-        let notificationEnabled: Bool = UserDefaults.standard.bool(forKey: "notificationEnabled")
-       
-        print(notificationEnabled)
-        
-        manager.requestPermission()
-        
-        if notificationEnabled {
-            manager.schedule()
-        } else {
-            manager.removeNotification()
-        }
-        
-    }
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
-    
-    init() {
-        setNotification()
-    }
-    
-    
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
