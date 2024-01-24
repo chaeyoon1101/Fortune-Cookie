@@ -2,9 +2,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var fortuneMessage = "test"
+    
     @State private var openedFortuneCookie = false
+    
     @State private var isAnimating = false
     
+    @State private var haptic: Haptic = Haptic(
+        rawValue: UserDefaults.standard.integer(
+            forKey: "hapticIntensity"
+        )
+    ) ?? .soft
     
     var randomMessage: String {
         let fortuneMessages = ModelData().fortuneCookie.messages
@@ -14,7 +21,6 @@ struct ContentView: View {
         
         return randomMessage
     }
-    
 
     var body: some View {
         NavigationView {
@@ -23,7 +29,7 @@ struct ContentView: View {
                 VStack {
                     ZStack(alignment: .topTrailing) {
                         HStack {
-                            NavigationLink(destination: SettingView(), label: {
+                            NavigationLink(destination: SettingView(haptic: $haptic), label: {
                                 Image(systemName: "gear")
                                     .resizable()
                                     .frame(width: 36, height: 36)
@@ -36,7 +42,7 @@ struct ContentView: View {
                             .onTapGesture {
                                 if (!isAnimating) {
                                     if (!openedFortuneCookie) {
-                                        HapticManager.instance.impact(style: .soft)
+                                        haptic.vibrate()
                                     }
                                     fortuneMessage = randomMessage
                                     isAnimating = true
