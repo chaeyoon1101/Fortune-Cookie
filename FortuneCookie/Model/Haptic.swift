@@ -43,21 +43,21 @@ enum Haptic: Int, CaseIterable {
     var name: String {
         switch self {
         case .soft:
-            return "부드럽게"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.soft", comment: "soft")
         case .rigid:
-            return "딱딱하게"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.rigid", comment: "rigid")
         case .light:
-            return "가볍게"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.light", comment: "light")
         case .medium:
-            return "적당하게"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.medium", comment: "medium")
         case .heavy:
-            return "세게"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.heavy", comment: "heavy")
         case .twice:
-            return "두 번"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.twice", comment: "twice")
         case .threeTimes:
-            return "세 번"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.threeTimes", comment: "threeTimes")
         case .none:
-            return "끄기"
+            return NSLocalizedString("SettingView.GeneralSetting.HapticIntensityPicker.none", comment: "none")
         }
     }
 }

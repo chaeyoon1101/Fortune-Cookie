@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var fortuneMessage = "test"
+    @State private var fortuneMessage: String = ""
     
     @State private var openedFortuneCookie = false
     
@@ -72,5 +72,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    Group {
+        ContentView()
+            .environment(\.locale, .init(identifier: "en"))
+    }
 }

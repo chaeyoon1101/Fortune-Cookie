@@ -1,7 +1,41 @@
-/* 
-  Localizable.strings
-  FortuneCookie
+// 한국어
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+
+/// Mark: - SettingView
+
+// Navigation View
+"SettingView.NavigationTitle" = "설정";
+
+// General Setting
+"SettingView.GeneralSetting.SectionHeaderText" = "기본 세팅";
+"SettingView.GeneralSetting.NotificationEnableToggleText" = "알림 설정 받기";
+"SettingView.GeneralSetting.NotificationTimeDatePickerText" = "시간 설정";
+"SettingView.GeneralSetting.HapticIntensityPickerText" = "진동 강도";
+"SettingView.GeneralSetting.AppVersionText" = "앱 버전";
+"SettingView.GeneralSetting.InquiryText" = "문의 하기";
+
+
+// Haptic Intensity Name
+"SettingView.GeneralSetting.HapticIntensityPicker.soft" = "부드럽게";
+"SettingView.GeneralSetting.HapticIntensityPicker.rigid" = "딱딱하게";
+"SettingView.GeneralSetting.HapticIntensityPicker.light" = "가볍게";
+"SettingView.GeneralSetting.HapticIntensityPicker.medium" = "적당하게";
+"SettingView.GeneralSetting.HapticIntensityPicker.heavy" = "세게";
+"SettingView.GeneralSetting.HapticIntensityPicker.twice" = "두 번";
+"SettingView.GeneralSetting.HapticIntensityPicker.threeTimes" = "세 번";
+"SettingView.GeneralSetting.HapticIntensityPicker.none" = "끄기";
+
+// Alert
+"SettingView.Alert.NotificationSetting.Title" = "알림 설정";
+"SettingView.Alert.NotificationSetting.ButtonText" = "알림 허용하러 가기";
+"SettingView.Alert.NotificationSetting.MessageText" = "알림 설정이 거부되어있어요. \n알림 설정을 허용으로 바꿔주세요!";
+"SettingView.Alert.Inquiry.Message" = "소중한 의견 정말 감사드립니다.\n더욱 발전하는 앱이 되도록 노력하겠습니다.";
+
+
+/// Mark: - MailView
+
+
+// MailController
+"MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
+"MailView.MailController.MailBody" = "문의 사항 및 앱의 버그, 피드백 사항을 적어주세요.\n\n\n\n==============================\n\n아이폰 기종 :\n아이폰 OS : %@\n앱 버전 : %@\n\n위 정보들은 문제가 발생하는 환경을\n파악하기 위해 사용됩니다.\n\n정보 제공을 원하지 않는다면\n삭제하실 수 있습니다.\n\n==============================";
+

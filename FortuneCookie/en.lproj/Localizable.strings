@@ -1,7 +1,41 @@
-/* 
-  Localizable.strings
-  FortuneCookie
+// 영어
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+
+/// Mark: - SettingView
+
+// Navigation View
+"SettingView.NavigationTitle" = "Setting";
+
+// General Setting
+"SettingView.GeneralSetting.SectionHeaderText" = "General Setting";
+"SettingView.GeneralSetting.NotificationEnableToggleText" = "Enable Notification";
+"SettingView.GeneralSetting.NotificationTimeDatePickerText" = "Set Time";
+"SettingView.GeneralSetting.HapticIntensityPickerText" = "Vibration Intensity";
+"SettingView.GeneralSetting.AppVersionText" = "App Version";
+"SettingView.GeneralSetting.InquiryText" = "Inquiry";
+
+
+// Haptic Intensity Name
+"SettingView.GeneralSetting.HapticIntensityPicker.soft" = "Soft";
+"SettingView.GeneralSetting.HapticIntensityPicker.rigid" = "Rigid";
+"SettingView.GeneralSetting.HapticIntensityPicker.light" = "Light";
+"SettingView.GeneralSetting.HapticIntensityPicker.medium" = "Medium";
+"SettingView.GeneralSetting.HapticIntensityPicker.heavy" = "Heavy";
+"SettingView.GeneralSetting.HapticIntensityPicker.twice" = "Twice";
+"SettingView.GeneralSetting.HapticIntensityPicker.threeTimes" = "Three Times";
+"SettingView.GeneralSetting.HapticIntensityPicker.none" = "None";
+
+// Alert
+"SettingView.Alert.NotificationSetting.Title" = "Notification Setting";
+"SettingView.Alert.NotificationSetting.ButtonText" = "Go to Allow Notifications";
+"SettingView.Alert.NotificationSetting.MessageText" = "The notification settings are rejected. \nPlease change the notification settings to Allow!";
+"SettingView.Alert.Inquiry.Message" = "Thank you so much for your valuable opinion.\nWe will try to become an app that develops further.";
+
+
+/// Mark: - MailView
+
+
+// MailController
+"MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
+"MailView.MailController.MailBody" = "Please write down your inquiries, bugs in the app, and feedback.\n\n\n\n==============================\n\niPhone Model :\niPhone OS : %@\nApp Version : %@\n\nThe above information is used to understand the environment in which the problem occurs.\n\n\nIf you do not want to provide information, you can delete it.\n\n==============================";
+

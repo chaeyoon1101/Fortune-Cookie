@@ -1,2 +1,41 @@
-// 영어
+// 중국어 번체
+
+
+/// Mark: - SettingView
+
+// Navigation View
+"SettingView.NavigationTitle" = "設置";
+
+// General Setting
+"SettingView.GeneralSetting.SectionHeaderText" = "一般設置";
+"SettingView.GeneralSetting.NotificationEnableToggleText" = "啓用通知";
+"SettingView.GeneralSetting.NotificationTimeDatePickerText" = "設置時間";
+"SettingView.GeneralSetting.HapticIntensityPickerText" = "振動強度";
+"SettingView.GeneralSetting.AppVersionText" = "應用程序版本";
+"SettingView.GeneralSetting.InquiryText" = "諮詢諮詢";
+
+
+// Haptic Intensity Name
+"SettingView.GeneralSetting.HapticIntensityPicker.soft" = "軟綿綿的";
+"SettingView.GeneralSetting.HapticIntensityPicker.rigid" = "僵硬的";
+"SettingView.GeneralSetting.HapticIntensityPicker.light" = "輕";
+"SettingView.GeneralSetting.HapticIntensityPicker.medium" = "媒體";
+"SettingView.GeneralSetting.HapticIntensityPicker.heavy" = "沉甸甸的";
+"SettingView.GeneralSetting.HapticIntensityPicker.twice" = "兩次";
+"SettingView.GeneralSetting.HapticIntensityPicker.threeTimes" = "3 次瀏覽";
+"SettingView.GeneralSetting.HapticIntensityPicker.none" = "無";
+
+// Alert
+"SettingView.Alert.NotificationSetting.Title" = "通知設置";
+"SettingView.Alert.NotificationSetting.ButtonText" = "轉到允許通知";
+"SettingView.Alert.NotificationSetting.MessageText" = "通知設置被拒絕。\n請將通知設置更改爲允許。";
+"SettingView.Alert.Inquiry.Message" = "非常感謝您的寶貴意見。\n我會努力成爲更好的應用程序。";
+
+
+/// Mark: - MailView
+
+
+// MailController
+"MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
+"MailView.MailController.MailBody" = "請寫下您的諮詢，應用程序中的錯誤和反饋.\n\n\n\n==============================\n\niPhone Model :\niPhone OS : %@\nApp Version : %@\n\n以上信息用於瞭解問題發生的環境。\n\n\n如果您不想提供信息，您可以刪除它。\n\n==============================";
 

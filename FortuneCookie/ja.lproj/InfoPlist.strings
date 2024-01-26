@@ -1,7 +1,3 @@
-/* 
-  InfoPlist.strings
-  FortuneCookie
+// 일본어
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+"CFBundleDisplayName" = "幸運のクッキー";

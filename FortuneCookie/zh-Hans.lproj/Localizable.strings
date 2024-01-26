@@ -1,7 +1,43 @@
-/* 
-  Localizable.strings
-  FortuneCookie
+// 중국어 간체
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+
+/// Mark: - SettingView
+
+
+// Navigation View
+
+"SettingView.NavigationTitle" = "设置";
+
+// General Setting
+"SettingView.GeneralSetting.SectionHeaderText" = "常规设置";
+"SettingView.GeneralSetting.NotificationEnableToggleText" = "启用通知";
+"SettingView.GeneralSetting.NotificationTimeDatePickerText" = "设置时间";
+"SettingView.GeneralSetting.HapticIntensityPickerText" = "振动强度";
+"SettingView.GeneralSetting.AppVersionText" = "应用版本";
+"SettingView.GeneralSetting.InquiryText" = "查询";
+
+
+// Haptic Intensity Name
+"SettingView.GeneralSetting.HapticIntensityPicker.soft" = "软";
+"SettingView.GeneralSetting.HapticIntensityPicker.rigid" = "刚性";
+"SettingView.GeneralSetting.HapticIntensityPicker.light" = "轻";
+"SettingView.GeneralSetting.HapticIntensityPicker.medium" = "中等";
+"SettingView.GeneralSetting.HapticIntensityPicker.heavy" = "重";
+"SettingView.GeneralSetting.HapticIntensityPicker.twice" = "两次";
+"SettingView.GeneralSetting.HapticIntensityPicker.threeTimes" = "三次";
+"SettingView.GeneralSetting.HapticIntensityPicker.none" = "无";
+
+// Alert
+"SettingView.Alert.NotificationSetting.Title" = "通知设置";
+"SettingView.Alert.NotificationSetting.ButtonText" = "进入允许通知";
+"SettingView.Alert.NotificationSetting.MessageText" = "通知设置被拒绝。请更改通知设置为允许。";
+"SettingView.Alert.Inquiry.Message" = "非常感谢您宝贵的意见。我们会努力成为更进一步的应用程序。";
+
+
+/// Mark: - MailView
+
+
+// MailController
+"MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
+"MailView.MailController.MailBody" = "请记录您的问题、应用程序中的错误和反馈意见。\n\n\n\n==============================\n\niPhone Model :\niPhone OS : %@\nApp Version : %@\n\n上述信息用于了解问题发生的环境。\n\n\n如果您不想提供信息，您可以删除它。\n\n==============================";
+

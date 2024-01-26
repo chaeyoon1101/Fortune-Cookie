@@ -1,7 +1,41 @@
-/* 
-  Localizable.strings
-  FortuneCookie
+// 일본어
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+
+/// Mark: - SettingView
+
+// Navigation View
+"SettingView.NavigationTitle" = "設定";
+
+// General Setting
+"SettingView.GeneralSetting.SectionHeaderText" = "基本セッティング";
+"SettingView.GeneralSetting.NotificationEnableToggleText" = "通知を有効にする";
+"SettingView.GeneralSetting.NotificationTimeDatePickerText" = "時間設定";
+"SettingView.GeneralSetting.HapticIntensityPickerText" = "振動強度";
+"SettingView.GeneralSetting.AppVersionText" = "アプリバージョン";
+"SettingView.GeneralSetting.InquiryText" = "問い合わせ";
+
+
+// Haptic Intensity Name
+"SettingView.GeneralSetting.HapticIntensityPicker.soft" = "軟らかし";
+"SettingView.GeneralSetting.HapticIntensityPicker.rigid" = "堅苦しい";
+"SettingView.GeneralSetting.HapticIntensityPicker.light" = "軽い";
+"SettingView.GeneralSetting.HapticIntensityPicker.medium" = "媒介物";
+"SettingView.GeneralSetting.HapticIntensityPicker.heavy" = "重い";
+"SettingView.GeneralSetting.HapticIntensityPicker.twice" = "2回";
+"SettingView.GeneralSetting.HapticIntensityPicker.threeTimes" = "3回";
+"SettingView.GeneralSetting.HapticIntensityPicker.none" = "なし";
+
+// Alert
+"SettingView.Alert.NotificationSetting.Title" = "通知設定";
+"SettingView.Alert.NotificationSetting.ButtonText" = "通知を許可しに行く";
+"SettingView.Alert.NotificationSetting.MessageText" = "通知設定が拒否されています。 \n通知設定を許可に変えてください！";
+"SettingView.Alert.Inquiry.Message" = "大切なご意見、本当にありがとうございます。\nさらに発展するアプリになるよう努力します。";
+
+
+/// Mark: - MailView
+
+
+// MailController
+"MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
+"MailView.MailController.MailBody" = "お問い合わせとアプリのバグ、フィードバックを書いてください。\n\n\n\n==============================\n\niPhone機種:\niPhone OS:%@\nアプリ版:%@\n\n上記の情報は、問題が発生する環境を\n把握するために使用されます。\n\n情報提供を望まない場合は\n削除することができます。\n\n==============================";
+

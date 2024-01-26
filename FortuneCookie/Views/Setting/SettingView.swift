@@ -18,26 +18,26 @@ struct SettingView: View {
 
     var body: some View {
         Form {
-            Section(header: Text("기본 세팅")) {
-                Toggle("알림 설정 받기", isOn: $notificationEnabled)
+            Section(header: Text("SettingView.GeneralSetting.SectionHeaderText")) {
+                Toggle("SettingView.GeneralSetting.NotificationEnableToggleText", isOn: $notificationEnabled)
                 
                 if notificationEnabled {
-                    DatePicker("시간 설정", selection: $notificationTime, displayedComponents: .hourAndMinute)
+                    DatePicker("SettingView.GeneralSetting.NotificationTimeDatePickerText", selection: $notificationTime, displayedComponents: .hourAndMinute)
                 }
                 
-                Picker("진동 강도", selection: $haptic) {
+                Picker("SettingView.GeneralSetting.HapticIntensityPickerText", selection: $haptic) {
                     ForEach(Haptic.allCases, id: \.self) { haptic in
                         Text(haptic.name)
                     }
                 }
                 
                 HStack {
-                    Text("앱 버전")
+                    Text("SettingView.GeneralSetting.AppVersionText")
                     Spacer()
                     Text("1.0")
                 }
                 
-                Button("문의 하기") {
+                Button("SettingView.GeneralSetting.InquiryText") {
                     self.isShowingMailView.toggle()
                 }
                 .disabled(!MFMailComposeViewController.canSendMail())
@@ -49,7 +49,7 @@ struct SettingView: View {
                 }
             }
         }
-        .navigationTitle("설정")
+        .navigationTitle("SettingView.NavigationTitle")
     
         .onAppear {
             reloadUserDefaults()
@@ -84,18 +84,18 @@ struct SettingView: View {
             }
         })
         
-        .alert("알림 설정", isPresented: $showingSettingAlert) {
-            Button("알림 허용하러 가기") {
+        .alert("SettingView.Alert.NotificationSetting.Title", isPresented: $showingSettingAlert) {
+            Button("SettingView.Alert.NotificationSetting.ButtonText") {
                 openAppSettings()
             }
         } message: {
-            Text("알림 설정이 거부되어있어요. \n알림 설정을 허용으로 바꿔주세요!")
+            Text("SettingView.Alert.NotificationSetting.MessageText")
         }
         
         .alert("", isPresented: $showingMailAlert) {
             
         } message: {
-            Text("소중한 의견 정말 감사드립니다.\n더욱 발전하는 앱이 되도록 노력하겠습니다.")
+            Text("SettingView.Alert.Inquiry.Message")
         }
     }
     

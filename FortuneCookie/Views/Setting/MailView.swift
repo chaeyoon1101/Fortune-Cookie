@@ -42,8 +42,9 @@ struct MailView: UIViewControllerRepresentable {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = context.coordinator
     
-        mail.setToRecipients(["chaeyoon0035@gmail.com"])
-        mail.setSubject("문의 사항")
+        let email = NSLocalizedString("MailView.MailController.EmailText", comment: "email")
+        
+        mail.setToRecipients([email])
         mail.setMessageBody(mailBodyString, isHTML: false)
         
         return mail
@@ -55,27 +56,14 @@ struct MailView: UIViewControllerRepresentable {
     }
     
     private var mailBodyString: String {
-        let string =
-        """
-        문의 사항 및 앱의 버그, 피드백 사항을 적어주세요.
+        let inquiryDescription = NSLocalizedString("MailView.MailController.MailBody", comment: "")
+        let formattedDescription = String.localizedStringWithFormat(
+            inquiryDescription,
+            UIDevice.current.systemVersion,
+            currentAppVersion
+        )
         
-        
-        ==============================
-        
-        아이폰 기종 :
-        아이폰 OS : \(UIDevice.current.systemVersion)
-        앱 버전 : \(currentAppVersion)
-        
-        위 정보들은 문제가 발생하는 환경을
-        파악하기 위해 사용됩니다.
-        
-        정보 제공을 원하지 않는다면
-        삭제하실 수 있습니다.
-        ==============================
-        
-        """
-        
-        return string
+        return formattedDescription
     }
 }
 

@@ -1,7 +1,4 @@
-/* 
-  InfoPlist.strings
-  FortuneCookie
+// 영어
 
-  Created by 임채윤 on 1/26/24.
-  
-*/
+"CFBundleDisplayName" = "Fortune Cookie";
+
