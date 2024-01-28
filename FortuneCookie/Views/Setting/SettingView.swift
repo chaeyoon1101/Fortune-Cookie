@@ -11,8 +11,8 @@ struct SettingView: View {
     @State private var showingSettingAlert: Bool = false
     @State private var showingMailAlert: Bool = false
     
+    @State var showingMailView = false
     @State var result: Result<MFMailComposeResult, Error>? = nil
-    @State var isShowingMailView = false
     
     let notificationManager = NotificationManager()
 
@@ -38,15 +38,23 @@ struct SettingView: View {
                 }
                 
                 Button("SettingView.GeneralSetting.InquiryText") {
-                    self.isShowingMailView.toggle()
+                    self.showingMailView.toggle()
                 }
                 .disabled(!MFMailComposeViewController.canSendMail())
-                .sheet(isPresented: $isShowingMailView) {
+                .sheet(isPresented: $showingMailView) {
                     MailView(result: self.$result)
                         .onDisappear {
                             handleMailResult()
                         }
                 }
+            
+                HStack {
+                    Text("Select a color")
+                    Spacer()
+//                    ColorPickerIcon(selectedColorIndex: <#Binding<Int>#>)
+                }
+                
+//                ColorPicker("ee", selection: $selectedColor)
             }
         }
         .navigationTitle("SettingView.NavigationTitle")

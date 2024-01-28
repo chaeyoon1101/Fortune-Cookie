@@ -3,11 +3,11 @@ import SwiftUI
 extension Color {
     enum Background: Int, CaseIterable {
         case coral = 0
-        case gray
         case mint
         case blue
         case lavender
         case rose
+        case gray
         
         var view: Color {
             switch self {
@@ -47,6 +47,23 @@ extension Color {
                     green: 228 / 255,
                     blue: 225 / 255
                 )
+            }
+        }
+        
+        var name: String {
+            switch self {
+            case .coral:
+                return "Coral"
+            case .mint:
+                return "Mint"
+            case .blue:
+                return "Blue"
+            case .lavender:
+                return "Lavender"
+            case .rose:
+                return "rose"
+            case .gray:
+                return "gray"
             }
         }
     }

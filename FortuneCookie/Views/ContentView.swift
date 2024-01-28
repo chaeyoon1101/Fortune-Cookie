@@ -13,6 +13,8 @@ struct ContentView: View {
         )
     ) ?? .soft
     
+    @State private var backgroundColorIndex = UserDefaults.standard.integer(forKey: "selectedBackgroundColorIndex")
+    
     var randomMessage: String {
         let fortuneMessages = ModelData().fortuneCookie.messages
         let range = 0..<fortuneMessages.count
@@ -25,10 +27,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                FortuneBackground()
+                FortuneBackground(selectedColor: $backgroundColorIndex)
                 VStack {
-                    ZStack(alignment: .topTrailing) {
+                    ZStack(alignment: .top) {
                         HStack {
+                            ColorPickerIcon(selectedColorIndex: $backgroundColorIndex)
+                                .padding()
+                            
+                            Spacer()
+                            
                             NavigationLink(destination: SettingView(haptic: $haptic), label: {
                                 Image(systemName: "gear")
                                     .resizable()
@@ -38,6 +45,7 @@ struct ContentView: View {
                                     .padding()
                             })
                         }
+                        
                         FortuneCookieImage(status: openedFortuneCookie)
                             .onTapGesture {
                                 if (!isAnimating) {

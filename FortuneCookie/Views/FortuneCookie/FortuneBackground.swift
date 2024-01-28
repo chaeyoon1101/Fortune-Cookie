@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct FortuneBackground: View {
+    @Binding var selectedColor: Int
+
     var body: some View {
         ZStack {
-            Color.Background(rawValue: 5)?.view
+            Color.Background(rawValue: selectedColor)?.view
                 .edgesIgnoringSafeArea(.all)
-            
-            FortuneCookieImage(status: false)
         }
         
     }
 }
 
 #Preview {
-    FortuneBackground()
+    FortuneBackground(selectedColor: .constant(1))
 }
