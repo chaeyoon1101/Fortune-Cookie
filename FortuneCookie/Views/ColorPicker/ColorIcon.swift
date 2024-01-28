@@ -1,10 +1,3 @@
-//
-//  ColorIcon.swift
-//  FortuneCookie
-//
-//  Created by 임채윤 on 1/29/24.
-//
-
 import SwiftUI
 
 struct ColorIcon: View {

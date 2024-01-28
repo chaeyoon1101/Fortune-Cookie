@@ -1,10 +1,3 @@
-//
-//  FortuneCookieImage.swift
-//  FortuneCookie
-//
-//  Created by 임채윤 on 1/23/24.
-//
-
 import SwiftUI
 
 struct FortuneCookieImage: View {

@@ -38,9 +38,7 @@ struct ColorPickerIcon: View {
                 } else {
                     ColorPickerView(selectedColorIndex: $selectedColorIndex)
                 }
-            }
-        
-            
+            }       
     }
 }
 
