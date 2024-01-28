@@ -32,10 +32,10 @@ func load<T: Decodable>(_ filename: String) -> T {
 }
 
 func localizeFile(name: String, languageCode: String) -> String {
-    let locale = Language(rawValue: languageCode)
+    let locale = Language(rawValue: languageCode)?.locale
     
-    if locale != nil {
-        return "\(languageCode)_\(name)"
+    if let locale = locale {
+        return "\(locale)_\(name)"
     } else {
         return "en_\(name)"
     }
@@ -43,8 +43,24 @@ func localizeFile(name: String, languageCode: String) -> String {
 
 enum Language: String {
     case ko
+    case kor = "ko-Kore"
     case en
     case ja
     case zhHans = "zh-Hans"
     case zhHant = "zh-Hant"
+    
+    var locale: String {
+        switch self {
+        case .ko, .kor:
+            return "ko"
+        case .en:
+            return "en"
+        case .ja:
+            return "ja"
+        case .zhHans:
+            return "zh-Hans"
+        case .zhHant:
+            return "zh-Hant"
+        }
+    }
 }
