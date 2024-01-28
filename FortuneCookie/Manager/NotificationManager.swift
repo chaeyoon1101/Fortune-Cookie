@@ -4,8 +4,8 @@ import UserNotifications
 struct NotificationManager {
     var notification = Notification(
         id: UUID().uuidString,
-        title: NSLocalizedString("Notification.Title", comment: "Notification Title"),
-        body: NSLocalizedString("Notification.Body", comment: "Notification body")
+        title: "Notification.Title".localized(comment: "Notification Title"),
+        body: "Notification.Body".localized(comment: "Notification body")
     )
     
     func requestPermission() {
@@ -45,7 +45,6 @@ struct NotificationManager {
         content.sound = UNNotificationSound.default
         content.body = notification.body
         
-//        print(date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
         
@@ -53,7 +52,6 @@ struct NotificationManager {
         
         UNUserNotificationCenter.current().add(request) { error in
             guard error == nil else { return }
-//            print(" id:\(notification.id)")
         }
     }
     

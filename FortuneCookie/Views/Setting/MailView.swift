@@ -42,7 +42,7 @@ struct MailView: UIViewControllerRepresentable {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = context.coordinator
     
-        let email = NSLocalizedString("MailView.MailController.EmailText", comment: "email")
+        let email = "MailView.MailController.EmailText".localized(comment: "email")
         
         mail.setToRecipients([email])
         mail.setMessageBody(mailBodyString, isHTML: false)
@@ -56,7 +56,7 @@ struct MailView: UIViewControllerRepresentable {
     }
     
     private var mailBodyString: String {
-        let inquiryDescription = NSLocalizedString("MailView.MailController.MailBody", comment: "")
+        let inquiryDescription = "MailView.MailController.MailBody".localized(comment: "mailBody")
         let formattedDescription = String.localizedStringWithFormat(
             inquiryDescription,
             UIDevice.current.systemVersion,
