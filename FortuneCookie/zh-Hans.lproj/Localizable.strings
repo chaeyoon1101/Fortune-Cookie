@@ -41,3 +41,8 @@
 "MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
 "MailView.MailController.MailBody" = "请记录您的问题、应用程序中的错误和反馈意见。\n\n\n\n==============================\n\niPhone Model :\niPhone OS : %@\nApp Version : %@\n\n上述信息用于了解问题发生的环境。\n\n\n如果您不想提供信息，您可以删除它。\n\n==============================";
 
+
+/// Mark: - Notification
+
+"Notification.Title" = "今天的幸运饼干";
+"Notification.Body" = "看看今天的幸运饼干！";

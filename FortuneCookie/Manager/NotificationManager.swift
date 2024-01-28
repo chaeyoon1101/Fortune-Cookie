@@ -2,7 +2,11 @@ import Foundation
 import UserNotifications
 
 struct NotificationManager {
-    var notification = Notification(id: UUID().uuidString, title: "오늘의 포춘 쿠키", body: "오늘의 포춘 쿠키를 확인해보세요!")
+    var notification = Notification(
+        id: UUID().uuidString,
+        title: NSLocalizedString("Notification.Title", comment: "Notification Title"),
+        body: NSLocalizedString("Notification.Body", comment: "Notification body")
+    )
     
     func requestPermission() {
         UNUserNotificationCenter.current()

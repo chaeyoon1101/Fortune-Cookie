@@ -39,3 +39,8 @@
 "MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
 "MailView.MailController.MailBody" = "お問い合わせとアプリのバグ、フィードバックを書いてください。\n\n\n\n==============================\n\niPhone機種:\niPhone OS:%@\nアプリ版:%@\n\n上記の情報は、問題が発生する環境を\n把握するために使用されます。\n\n情報提供を望まない場合は\n削除することができます。\n\n==============================";
 
+
+/// Mark: - Notification
+
+"Notification.Title" = "今日のフォーチュンクッキー";
+"Notification.Body" = "今日のフォーチュンクッキーをご確認ください！";

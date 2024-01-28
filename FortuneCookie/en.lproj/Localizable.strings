@@ -39,3 +39,8 @@
 "MailView.MailController.EmailText" = "chaeyoon0035@gmail.com";
 "MailView.MailController.MailBody" = "Please write down your inquiries, bugs in the app, and feedback.\n\n\n\n==============================\n\niPhone Model :\niPhone OS : %@\nApp Version : %@\n\nThe above information is used to understand the environment in which the problem occurs.\n\n\nIf you do not want to provide information, you can delete it.\n\n==============================";
 
+
+/// Mark: - Notification
+
+"Notification.Title" = "Today's fortune cookie";
+"Notification.Body" = "Check out today's Fortune Cookie!";
