@@ -47,14 +47,6 @@ struct SettingView: View {
                             handleMailResult()
                         }
                 }
-            
-                HStack {
-                    Text("Select a color")
-                    Spacer()
-//                    ColorPickerIcon(selectedColorIndex: <#Binding<Int>#>)
-                }
-                
-//                ColorPicker("ee", selection: $selectedColor)
             }
         }
         .navigationTitle("SettingView.NavigationTitle")

@@ -1,6 +1,12 @@
 import SwiftUI
 
 extension Color {
+    static func getBackground(index: Int) -> Color {
+        let color = Color.Background(rawValue: index)?.view ?? .white
+        
+        return color
+    }
+    
     enum Background: Int, CaseIterable {
         case coral = 0
         case mint

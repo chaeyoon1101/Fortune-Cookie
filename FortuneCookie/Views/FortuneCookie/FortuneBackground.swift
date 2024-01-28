@@ -5,7 +5,7 @@ struct FortuneBackground: View {
 
     var body: some View {
         ZStack {
-            Color.Background(rawValue: selectedColor)?.view
+            Color.getBackground(index: selectedColor)
                 .edgesIgnoringSafeArea(.all)
         }
         

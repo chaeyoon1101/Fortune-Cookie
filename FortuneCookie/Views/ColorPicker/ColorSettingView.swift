@@ -19,6 +19,7 @@ struct CapsuleButtonStyle: ButtonStyle {
             .font(.system(size: 18, weight: .bold))
             .opacity(configuration.isPressed ? 0.8 : 1)
     }
+    Color.Background.
 }
 
 struct ColorSettingView: View {

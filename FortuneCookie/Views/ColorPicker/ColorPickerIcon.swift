@@ -9,7 +9,7 @@ struct ColorPickerIcon: View {
     
     var body: some View {
         Circle()
-            .fill(Color.Background(rawValue: selectedColorIndex)?.view ?? .white)
+            .fill(Color.getBackground(index: selectedColorIndex))
             .overlay(
                 Circle()
                     .stroke(LinearGradient(
