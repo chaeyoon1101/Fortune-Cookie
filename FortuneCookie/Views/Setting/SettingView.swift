@@ -2,7 +2,7 @@ import SwiftUI
 import MessageUI
 
 struct SettingView: View {
-    @State private var notificationEnabled: Bool = UserDefaults.standard.bool(forKey: "notificationEnabled")
+    @AppStorage("notificationEnabled") private var notificationEnabled: Bool = false
     
     @State private var notificationTime: Date = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
     
@@ -11,7 +11,7 @@ struct SettingView: View {
     @State private var showingSettingAlert: Bool = false
     @State private var showingMailAlert: Bool = false
     
-    @State var showingMailView = false
+    @State var isMailViewPresented = false
     @State var result: Result<MFMailComposeResult, Error>? = nil
     
     let notificationManager = NotificationManager()
@@ -38,10 +38,10 @@ struct SettingView: View {
                 }
                 
                 Button("SettingView.GeneralSetting.InquiryText") {
-                    self.showingMailView.toggle()
+                    self.isMailViewPresented.toggle()
                 }
                 .disabled(!MFMailComposeViewController.canSendMail())
-                .sheet(isPresented: $showingMailView) {
+                .sheet(isPresented: $isMailViewPresented) {
                     MailView(result: self.$result)
                         .onDisappear {
                             handleMailResult()
@@ -56,12 +56,9 @@ struct SettingView: View {
         }
         
         .onChange(of: notificationEnabled, perform: { newValue in
-            UserDefaults.standard.set(newValue, forKey: "notificationEnabled")
-            
             notificationManager.requestPermission()
             checkNotificationSetting()
 
-            print("changed")
             DispatchQueue.main.async {
                 handleNotificationEnabledChange()
             }
@@ -69,16 +66,13 @@ struct SettingView: View {
         
         .onChange(of: notificationTime, perform: { newNotificationTime in
             UserDefaults.standard.set(newNotificationTime, forKey: "notificationTime")
-
+            
             DispatchQueue.main.async {
                 handleNotificationTimeChange()
             }
         })
         
         .onChange(of: haptic, perform: { newValue in
-            let hapticIntensity = newValue.rawValue
-            UserDefaults.standard.set(hapticIntensity, forKey: "hapticIntensity")
-
             DispatchQueue.main.async {
                 haptic.vibrate()
             }
@@ -100,13 +94,7 @@ struct SettingView: View {
     }
     
     private func reloadUserDefaults() {
-        notificationEnabled = UserDefaults.standard.bool(forKey: "notificationEnabled")
         notificationTime = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()
-        haptic = Haptic(
-            rawValue: UserDefaults.standard.integer(
-                forKey: "hapticIntensity"
-            )
-        ) ?? .soft
     }
 
     private func handleNotificationEnabledChange() {

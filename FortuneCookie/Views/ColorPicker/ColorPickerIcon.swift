@@ -30,13 +30,13 @@ struct ColorPickerIcon: View {
 
             .sheet(isPresented: $isColorPickerModalPresented) {
                 if #available(iOS 16.4, *) {
-                    ColorPickerView(selectedColorIndex: $selectedColorIndex)
+                    ColorPickerView(isPresented: $isColorPickerModalPresented, selectedColorIndex: $selectedColorIndex)
                         .presentationBackgroundInteraction(.enabled(upThrough: .height(100.0)))
                         .presentationDetents([.height(100.0)])
                         .presentationBackground(.clear)
                        
                 } else {
-                    ColorPickerView(selectedColorIndex: $selectedColorIndex)
+                    ColorPickerView(isPresented: $isColorPickerModalPresented, selectedColorIndex: $selectedColorIndex)
                 }
             }       
     }

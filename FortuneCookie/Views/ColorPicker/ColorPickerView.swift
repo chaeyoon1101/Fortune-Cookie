@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ColorPickerView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var isPresented: Bool
     @Binding var selectedColorIndex: Int
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ColorPickerView: View {
             }
             .navigationBarItems(
                 trailing: Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    isPresented = false
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .font(.title)
@@ -33,5 +33,5 @@ struct ColorPickerView: View {
 }
 
 #Preview {
-    ColorPickerView(selectedColorIndex: .constant(2))
+    ColorPickerView(isPresented: .constant(true), selectedColorIndex: .constant(2))
 }

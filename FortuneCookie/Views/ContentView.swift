@@ -1,87 +1,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var fortuneMessage: String = ""
-    
-    @State private var openedFortuneCookie = false
-    
-    @State private var isAnimating = false
-    
-    @State private var haptic: Haptic = Haptic(
-        rawValue: UserDefaults.standard.integer(
-            forKey: "hapticIntensity"
-        )
-    ) ?? .soft
-    
-    @State private var backgroundColorIndex = UserDefaults.standard.integer(forKey: "selectedBackgroundColorIndex")
-    
-    var randomMessage: String {
-        let fortuneMessages = ModelData().fortuneCookie.messages
-        let range = 0..<fortuneMessages.count
-        
-        let randomMessage = fortuneMessages[Int.random(in: range)]
-        
-        return randomMessage
-    }
-
     var body: some View {
-        NavigationView {
-            ZStack {
-                FortuneBackground(selectedColor: $backgroundColorIndex)
-                VStack {
-                    ZStack(alignment: .top) {
-                        HStack {
-                            ColorPickerIcon(selectedColorIndex: $backgroundColorIndex)
-                                .padding()
-                            
-                            Spacer()
-                            
-                            NavigationLink(destination: SettingView(haptic: $haptic), label: {
-                                Image(systemName: "gear")
-                                    .resizable()
-                                    .frame(width: 36, height: 36)
-                                    .foregroundColor(.black)
-                                    .clipShape(Circle())
-                                    .padding()
-                            })
-                        }
-                        
-                        FortuneCookieImage(status: openedFortuneCookie)
-                            .onTapGesture {
-                                if (!isAnimating) {
-                                    if (!openedFortuneCookie) {
-                                        haptic.vibrate()
-                                    }
-                                    fortuneMessage = randomMessage
-                                    isAnimating = true
-                                    if #available(iOS 17.0, *) {
-                                        withAnimation {
-                                            openedFortuneCookie.toggle()
-                                        } completion: {
-                                            isAnimating = false
-                                        }
-                                    } else {
-                                        withAnimation {
-                                            openedFortuneCookie.toggle()
-                                            isAnimating = false
-                                        }
-                                    }
-                                }
-                            }
-                    }
+        TabView {
+              FortuneCookieView()
+                .tabItem {
+                  Image(systemName: "1.square.fill")
+                  Text("First")
                 }
-                if (openedFortuneCookie) {
-                    FortuneMessagePaper(message: fortuneMessage)
+              Text("Another Tab")
+                .tabItem {
+                  Image(systemName: "2.square.fill")
+                  Text("Second")
                 }
+//              SettingView(haptic: <#T##Binding<Haptic>#>)
+//                .tabItem {
+//                  Image(systemName: "3.square.fill")
+//                  Text("Third")
+//                }
+//                .badge(10)
             }
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+            .font(.headline)
     }
 }
 
 #Preview {
-    Group {
-        ContentView()
-            .environment(\.locale, .init(identifier: "en"))
-    }
+    ContentView()
 }
