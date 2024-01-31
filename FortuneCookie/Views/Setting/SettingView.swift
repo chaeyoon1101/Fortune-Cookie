@@ -17,81 +17,85 @@ struct SettingView: View {
     let notificationManager = NotificationManager()
 
     var body: some View {
-        Form {
-            Section(header: Text("SettingView.GeneralSetting.SectionHeaderText")) {
-                Toggle("SettingView.GeneralSetting.NotificationEnableToggleText", isOn: $notificationEnabled)
-                
-                if notificationEnabled {
-                    DatePicker("SettingView.GeneralSetting.NotificationTimeDatePickerText", selection: $notificationTime, displayedComponents: .hourAndMinute)
-                }
-                
-                Picker("SettingView.GeneralSetting.HapticIntensityPickerText", selection: $haptic) {
-                    ForEach(Haptic.allCases, id: \.self) { haptic in
-                        Text(haptic.name)
+        NavigationView {
+            Form {
+                Section(header: Text("SettingView.GeneralSetting.SectionHeaderText")) {
+                    Toggle("SettingView.GeneralSetting.NotificationEnableToggleText", isOn: $notificationEnabled)
+                    
+                    if notificationEnabled {
+                        DatePicker("SettingView.GeneralSetting.NotificationTimeDatePickerText", selection: $notificationTime, displayedComponents: .hourAndMinute)
+                    }
+                    
+                    Picker("SettingView.GeneralSetting.HapticIntensityPickerText", selection: $haptic) {
+                        ForEach(Haptic.allCases, id: \.self) { haptic in
+                            Text(haptic.name)
+                        }
+                    }
+                    
+                    HStack {
+                        Text("SettingView.GeneralSetting.AppVersionText")
+                        Spacer()
+                        Text("1.0")
+                    }
+                    
+                    Button("SettingView.GeneralSetting.InquiryText") {
+                        self.isMailViewPresented.toggle()
+                    }
+                    .disabled(!MFMailComposeViewController.canSendMail())
+                    .sheet(isPresented: $isMailViewPresented) {
+                        MailView(result: self.$result)
+                            .onDisappear {
+                                handleMailResult()
+                            }
                     }
                 }
-                
-                HStack {
-                    Text("SettingView.GeneralSetting.AppVersionText")
-                    Spacer()
-                    Text("1.0")
-                }
-                
-                Button("SettingView.GeneralSetting.InquiryText") {
-                    self.isMailViewPresented.toggle()
-                }
-                .disabled(!MFMailComposeViewController.canSendMail())
-                .sheet(isPresented: $isMailViewPresented) {
-                    MailView(result: self.$result)
-                        .onDisappear {
-                            handleMailResult()
-                        }
-                }
             }
-        }
-        .navigationTitle("SettingView.NavigationTitle")
-    
-        .onAppear {
-            reloadUserDefaults()
-        }
+            .navigationTitle("SettingView.NavigationTitle")
+            .navigationBarTitleDisplayMode(.inline)
         
-        .onChange(of: notificationEnabled, perform: { newValue in
-            notificationManager.requestPermission()
-            checkNotificationSetting()
+            .onAppear {
+                reloadUserDefaults()
+            }
+            
+            .onChange(of: notificationEnabled, perform: { newValue in
+                notificationManager.requestPermission()
+                checkNotificationSetting()
 
-            DispatchQueue.main.async {
-                handleNotificationEnabledChange()
-            }
-        })
-        
-        .onChange(of: notificationTime, perform: { newNotificationTime in
-            UserDefaults.standard.set(newNotificationTime, forKey: "notificationTime")
+                DispatchQueue.main.async {
+                    handleNotificationEnabledChange()
+                }
+            })
             
-            DispatchQueue.main.async {
-                handleNotificationTimeChange()
-            }
-        })
-        
-        .onChange(of: haptic, perform: { newValue in
-            DispatchQueue.main.async {
-                haptic.vibrate()
-            }
-        })
-        
-        .alert("SettingView.Alert.NotificationSetting.Title", isPresented: $showingSettingAlert) {
-            Button("SettingView.Alert.NotificationSetting.ButtonText") {
-                openAppSettings()
-            }
-        } message: {
-            Text("SettingView.Alert.NotificationSetting.MessageText")
-        }
-        
-        .alert("", isPresented: $showingMailAlert) {
+            .onChange(of: notificationTime, perform: { newNotificationTime in
+                UserDefaults.standard.set(newNotificationTime, forKey: "notificationTime")
+                
+                DispatchQueue.main.async {
+                    handleNotificationTimeChange()
+                }
+            })
             
-        } message: {
-            Text("SettingView.Alert.Inquiry.Message")
+            .onChange(of: haptic, perform: { newValue in
+                DispatchQueue.main.async {
+                    haptic.vibrate()
+                }
+            })
+            
+            .alert("SettingView.Alert.NotificationSetting.Title", isPresented: $showingSettingAlert) {
+                Button("SettingView.Alert.NotificationSetting.ButtonText") {
+                    openAppSettings()
+                }
+            } message: {
+                Text("SettingView.Alert.NotificationSetting.MessageText")
+            }
+            
+            .alert("", isPresented: $showingMailAlert) {
+                
+            } message: {
+                Text("SettingView.Alert.Inquiry.Message")
+            }
         }
     }
+    
     
     private func reloadUserDefaults() {
         notificationTime = UserDefaults.standard.object(forKey: "notificationTime") as? Date ?? Date()

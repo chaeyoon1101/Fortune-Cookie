@@ -7,7 +7,7 @@ struct FortuneCookieView: View {
     
     @State private var isAnimating = false
 
-    @AppStorage("hapticIntensity") private var haptic: Haptic = .none
+    @Binding var haptic: Haptic
     
     @AppStorage("selectedBackgroundColorIndex") private var backgroundColorIndex: Int = 0
     
@@ -27,19 +27,9 @@ struct FortuneCookieView: View {
                 VStack {
                     ZStack(alignment: .top) {
                         HStack {
+                            Spacer()
                             ColorPickerIcon(selectedColorIndex: $backgroundColorIndex)
                                 .padding()
-                            
-                            Spacer()
-                            
-                            NavigationLink(destination: SettingView(haptic: $haptic), label: {
-                                Image(systemName: "gear")
-                                    .resizable()
-                                    .frame(width: 36, height: 36)
-                                    .foregroundColor(.black)
-                                    .clipShape(Circle())
-                                    .padding()
-                            })
                         }
                         
                         FortuneCookieImage(status: openedFortuneCookie)
@@ -47,8 +37,8 @@ struct FortuneCookieView: View {
                                 if (!isAnimating) {
                                     if (!openedFortuneCookie) {
                                         haptic.vibrate()
+                                        fortuneMessage = randomMessage
                                     }
-                                    fortuneMessage = randomMessage
                                     isAnimating = true
                                     if #available(iOS 17.0, *) {
                                         withAnimation {
@@ -76,5 +66,5 @@ struct FortuneCookieView: View {
 }
 
 #Preview {
-    FortuneCookieView()
+    FortuneCookieView(haptic: .constant(.soft))
 }

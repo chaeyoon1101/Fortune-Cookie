@@ -8,7 +8,7 @@ struct FortuneBackground: View {
             Color.getBackground(index: selectedColor)
                 .edgesIgnoringSafeArea(.all)
         }
-
+        
     }
 }
 

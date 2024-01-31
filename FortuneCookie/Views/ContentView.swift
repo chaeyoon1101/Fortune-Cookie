@@ -1,27 +1,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        TabView {
-              FortuneCookieView()
-                .tabItem {
-                  Image(systemName: "1.square.fill")
-                  Text("First")
-                }
-              Text("Another Tab")
-                .tabItem {
-                  Image(systemName: "2.square.fill")
-                  Text("Second")
-                }
-//              SettingView(haptic: <#T##Binding<Haptic>#>)
-//                .tabItem {
-//                  Image(systemName: "3.square.fill")
-//                  Text("Third")
-//                }
-//                .badge(10)
-            }
-            .font(.headline)
+    @State private var selection: Tab = .fortuneCookie
+    
+    enum Tab {
+        case fortuneCookie
+        case diary
+        case setting
     }
+    
+    @AppStorage("hapticIntensity") private var haptic: Haptic = .soft
+    
+    var body: some View {
+        TabView(selection: $selection) {
+            FortuneCookieView(haptic: $haptic)
+                .tabItem {
+                  Image(systemName: "house")
+                  Text("포춘쿠키")
+                }
+                .tag(Tab.fortuneCookie)
+            DiaryView()
+                .tabItem {
+                  Image(systemName: "book.closed")
+                  Text("일기")
+                }
+                .tag(Tab.diary)
+            SettingView(haptic: $haptic)
+                .tabItem {
+                  Image(systemName: "gear")
+                  Text("설정")
+                }
+                .tag(Tab.setting)
+        }
+        .onAppear() {
+            UITabBar.appearance().barTintColor = .black
+        }
+        .font(.headline)
+    }
+    
 }
 
 #Preview {

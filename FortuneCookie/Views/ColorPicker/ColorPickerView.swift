@@ -19,6 +19,8 @@ struct ColorPickerView: View {
                     }
                 }
             }
+            .navigationTitle("배경 색상 설정")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 trailing: Button(action: {
                     isPresented = false
