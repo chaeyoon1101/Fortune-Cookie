@@ -5,7 +5,6 @@ struct ContentView: View {
     
     enum Tab {
         case fortuneCookie
-        case diary
         case setting
     }
     
@@ -19,12 +18,6 @@ struct ContentView: View {
                   Text("포춘쿠키")
                 }
                 .tag(Tab.fortuneCookie)
-            DiaryView()
-                .tabItem {
-                  Image(systemName: "book.closed")
-                  Text("일기")
-                }
-                .tag(Tab.diary)
             SettingView(haptic: $haptic)
                 .tabItem {
                   Image(systemName: "gear")

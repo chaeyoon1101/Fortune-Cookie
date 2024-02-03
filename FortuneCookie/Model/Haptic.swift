@@ -61,5 +61,3 @@ enum Haptic: Int, CaseIterable {
         }
     }
 }
-
-
